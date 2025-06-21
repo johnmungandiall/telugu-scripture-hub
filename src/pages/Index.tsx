@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import { Key, Database, Activity, Users } from "lucide-react";
 import { Header } from "@/components/Header";
@@ -6,6 +5,7 @@ import { StatsCard } from "@/components/StatsCard";
 import { ApiKeyCard } from "@/components/ApiKeyCard";
 import { CreateApiKeyDialog } from "@/components/CreateApiKeyDialog";
 import { BibleDataOverview } from "@/components/BibleDataOverview";
+import { ApiPlayground } from "@/components/ApiPlayground";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { useToast } from "@/hooks/use-toast";
 
@@ -138,9 +138,10 @@ const Index = () => {
 
         {/* Main Content Tabs */}
         <Tabs defaultValue="api-keys" className="space-y-6">
-          <TabsList className="grid w-full grid-cols-2 lg:w-[400px]">
+          <TabsList className="grid w-full grid-cols-3 lg:w-[600px]">
             <TabsTrigger value="api-keys">API Key Management</TabsTrigger>
             <TabsTrigger value="data-overview">Data Overview</TabsTrigger>
+            <TabsTrigger value="playground">API Playground</TabsTrigger>
           </TabsList>
 
           <TabsContent value="api-keys" className="space-y-6">
@@ -180,6 +181,16 @@ const Index = () => {
                 <p className="text-gray-600">Telugu Bible database status and API endpoints</p>
               </div>
               <BibleDataOverview />
+            </div>
+          </TabsContent>
+
+          <TabsContent value="playground">
+            <div className="space-y-6">
+              <div>
+                <h2 className="text-2xl font-bold text-gray-900 mb-2">API Playground</h2>
+                <p className="text-gray-600">Test API endpoints with live examples and auto-sync setup</p>
+              </div>
+              <ApiPlayground />
             </div>
           </TabsContent>
         </Tabs>
