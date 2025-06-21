@@ -74,22 +74,71 @@ export const BibleDataOverview = () => {
         <CardHeader>
           <CardTitle className="flex items-center gap-2">
             <Search className="h-5 w-5 text-blue-600" />
-            API Endpoints
+            API Documentation
           </CardTitle>
         </CardHeader>
         <CardContent>
-          <div className="space-y-3 text-sm">
-            <div className="p-3 bg-blue-50 rounded-lg">
-              <code className="text-blue-800 font-mono">GET /api/verse/{book}/{chapter}/{verse}</code>
-              <p className="text-gray-600 mt-1">Get specific verse</p>
+          <div className="space-y-6">
+            <div>
+              <h4 className="font-semibold text-gray-900 mb-3">Authentication</h4>
+              <div className="p-3 bg-yellow-50 rounded-lg">
+                <p className="text-sm text-gray-700 mb-2">Include your API key in the request header:</p>
+                <code className="text-sm bg-gray-100 px-2 py-1 rounded">Authorization: Bearer YOUR_API_KEY</code>
+              </div>
             </div>
-            <div className="p-3 bg-green-50 rounded-lg">
-              <code className="text-green-800 font-mono">GET /api/search?q={query}</code>
-              <p className="text-gray-600 mt-1">Search verses by keyword</p>
+            
+            <div>
+              <h4 className="font-semibold text-gray-900 mb-3">Available Endpoints</h4>
+              <div className="space-y-3 text-sm">
+                <div className="p-3 bg-blue-50 rounded-lg">
+                  <code className="text-blue-800 font-mono">GET /api/verse/matthew/1/1</code>
+                  <p className="text-gray-600 mt-1">Get a specific verse by book name, chapter, and verse number</p>
+                  <div className="mt-2 text-xs text-gray-500">
+                    Example: <code>/api/verse/matthew/1/1</code> returns Matthew 1:1
+                  </div>
+                </div>
+                <div className="p-3 bg-green-50 rounded-lg">
+                  <code className="text-green-800 font-mono">GET /api/search?q=love</code>
+                  <p className="text-gray-600 mt-1">Search verses containing specific keywords</p>
+                  <div className="mt-2 text-xs text-gray-500">
+                    Example: <code>/api/search?q=love</code> returns all verses containing "love"
+                  </div>
+                </div>
+                <div className="p-3 bg-purple-50 rounded-lg">
+                  <code className="text-purple-800 font-mono">GET /api/chapter/john/3</code>
+                  <p className="text-gray-600 mt-1">Get all verses from a specific chapter</p>
+                  <div className="mt-2 text-xs text-gray-500">
+                    Example: <code>/api/chapter/john/3</code> returns all verses from John chapter 3
+                  </div>
+                </div>
+              </div>
             </div>
-            <div className="p-3 bg-purple-50 rounded-lg">
-              <code className="text-purple-800 font-mono">GET /api/chapter/{book}/{chapter}</code>
-              <p className="text-gray-600 mt-1">Get entire chapter</p>
+
+            <div>
+              <h4 className="font-semibold text-gray-900 mb-3">Response Format</h4>
+              <div className="p-3 bg-gray-50 rounded-lg">
+                <pre className="text-xs text-gray-700 overflow-x-auto">
+{`{
+  "success": true,
+  "data": {
+    "book": "matthew",
+    "chapter": 1,
+    "verse": 1,
+    "text": "అబ్రాహాము కుమారుడు దావీదు కుమారుడు యేసుక్రీస్తు వంశావళి"
+  }
+}`}
+                </pre>
+              </div>
+            </div>
+
+            <div>
+              <h4 className="font-semibold text-gray-900 mb-3">Rate Limits</h4>
+              <div className="p-3 bg-orange-50 rounded-lg">
+                <p className="text-sm text-gray-700">
+                  Free tier: 1000 requests per day<br />
+                  Premium tier: 10,000 requests per day
+                </p>
+              </div>
             </div>
           </div>
         </CardContent>
