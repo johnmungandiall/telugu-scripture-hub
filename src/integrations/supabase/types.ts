@@ -9,6 +9,95 @@ export type Json =
 export type Database = {
   public: {
     Tables: {
+      api_keys: {
+        Row: {
+          created_at: string | null
+          id: string
+          is_active: boolean | null
+          key_hash: string
+          last_used_at: string | null
+          name: string
+        }
+        Insert: {
+          created_at?: string | null
+          id?: string
+          is_active?: boolean | null
+          key_hash: string
+          last_used_at?: string | null
+          name: string
+        }
+        Update: {
+          created_at?: string | null
+          id?: string
+          is_active?: boolean | null
+          key_hash?: string
+          last_used_at?: string | null
+          name?: string
+        }
+        Relationships: []
+      }
+      bible_books: {
+        Row: {
+          book_order: number
+          created_at: string | null
+          id: number
+          name: string
+          telugu_name: string
+          testament: string
+        }
+        Insert: {
+          book_order: number
+          created_at?: string | null
+          id?: number
+          name: string
+          telugu_name: string
+          testament: string
+        }
+        Update: {
+          book_order?: number
+          created_at?: string | null
+          id?: number
+          name?: string
+          telugu_name?: string
+          testament?: string
+        }
+        Relationships: []
+      }
+      bible_verses: {
+        Row: {
+          book_id: number | null
+          chapter: number
+          created_at: string | null
+          id: number
+          text: string
+          verse: number
+        }
+        Insert: {
+          book_id?: number | null
+          chapter: number
+          created_at?: string | null
+          id?: number
+          text: string
+          verse: number
+        }
+        Update: {
+          book_id?: number | null
+          chapter?: number
+          created_at?: string | null
+          id?: number
+          text?: string
+          verse?: number
+        }
+        Relationships: [
+          {
+            foreignKeyName: "bible_verses_book_id_fkey"
+            columns: ["book_id"]
+            isOneToOne: false
+            referencedRelation: "bible_books"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       documents: {
         Row: {
           content: string | null
